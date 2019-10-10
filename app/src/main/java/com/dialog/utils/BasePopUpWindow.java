@@ -7,13 +7,15 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
-import androidx.appcompat.widget.AppCompatTextView;
-
+/**
+ * 扩展弹窗继承即可
+ */
 public abstract class BasePopUpWindow extends PopupWindow {
 
     private View mView;
     public Context mContext;
     public Activity mActivity;
+
 
     public BasePopUpWindow(Context context) {
         super(context);
@@ -29,11 +31,23 @@ public abstract class BasePopUpWindow extends PopupWindow {
         init();
     }
 
+    public BasePopUpWindow(int width, int height, Context context, Activity activity) {
+        super(width, height);
+        mContext = context;
+        mActivity = activity;
+        init();
+    }
+
     public abstract View getView();
 
     private void init() {
         mView = getView();
-        setContentView(mView);
+
+        if (mView != null) {
+
+            setContentView(mView);
+        }
+
         //去除黑边
         setBackgroundDrawable(new ColorDrawable(0x00000000));
 
@@ -55,7 +69,10 @@ public abstract class BasePopUpWindow extends PopupWindow {
     public void showAtLocation(int location, int x, int y, boolean is) {
         setAlpha(0.5f);
         setFocusable(is);
-        showAtLocation(mView, location, x, y);
+        if (mView != null) {
+            showAtLocation(mView, location, x, y);
+        }
+
     }
 
     @Override

@@ -19,7 +19,7 @@ public class PopWindowUtils extends BasePopUpWindow {
 
     private AppCompatTextView actvTitle;
     private View inflate;
-    private Activity mActivity;
+
     private AppCompatTextView actvContent;
     private AppCompatButton btnCancel;
     private AppCompatButton btnCommit;
@@ -47,20 +47,6 @@ public class PopWindowUtils extends BasePopUpWindow {
 
 
     }
-
-//    /**
-//     * 设置宽和高
-//     *
-//     * @param context
-//     * @param width
-//     * @param height
-//     */
-//    public PopWindowUtils(Context context, Activity activity, int width, int height) {
-//        super(width, height);
-//        mContext = context;
-//        mActivity = activity;
-//        initView();
-//    }
 
 
     @Override

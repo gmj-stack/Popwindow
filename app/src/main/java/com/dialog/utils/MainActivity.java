@@ -71,8 +71,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button2:
 
-//                popWindowUtils.setAnimationStyle(R.style.popwin_anim_style);
-                popWindowUtils.showAtLocation(Gravity.BOTTOM, 0, 0, true);
+                PopUpWindowPhoto popUpWindowPhoto =
+                        new PopUpWindowPhoto(this, MainActivity.this);
+
+                popUpWindowPhoto.showAtLocation(Gravity.BOTTOM, 0, 0, true);
 
                 break;
         }

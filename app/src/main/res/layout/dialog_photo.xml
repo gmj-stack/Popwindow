@@ -15,31 +15,40 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_take"
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:text="拍照" />
+            android:gravity="center"
+            android:text="拍照"
+            android:textColor="#000000" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="#cccccc" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_photo"
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_below="@id/btn_take"
-            android:text="相册" />
+            android:gravity="center"
+            android:text="相册"
+            android:textColor="#000000" />
+
+
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cancel"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/cardview"
         android:text="取消"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
