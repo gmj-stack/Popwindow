@@ -35,7 +35,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         popWindowUtils =
                 new PopWindowUtils(this, MainActivity.this);
 
+        popWindowUtils.setTvTitle("我是头部", 0, "#fff000")
+                .setContent("这是一段测试decent的哈")
+                .setOnCickListener(new PopWindowUtils.OnCickListener() {
+                    @Override
+                    public void onLeftClickListener(String content) {
+                        popWindowUtils.dismiss();
+                    }
 
+                    @Override
+                    public void onRightClickListener(String content) {
+                        popWindowUtils.dismiss();
+                    }
+
+                    @Override
+                    public void onCancelClickLietener() {
+
+                    }
+                });
     }
 
 
@@ -50,21 +67,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                popWindowUtils.setTvTitle("我是头部", 0, "#fff000")
-                        .setContent("这是一段测试decent的哈")
-                        .setOnCickListener(new PopWindowUtils.OnCickListener() {
-                            @Override
-                            public void onLeftClickListener(String content) {
-                                popWindowUtils.dismiss();
-                            }
-
-                            @Override
-                            public void onRightClickListener(String content) {
-                                popWindowUtils.dismiss();
-                            }
-                        }).showAtLocation(Gravity.CENTER, 0, 0, false);
+                popWindowUtils.showAtLocation(Gravity.CENTER, 0, 0, false);
                 break;
             case R.id.button2:
+
+//                popWindowUtils.setAnimationStyle(R.style.popwin_anim_style);
+                popWindowUtils.showAtLocation(Gravity.BOTTOM, 0, 0, true);
+
                 break;
         }
     }

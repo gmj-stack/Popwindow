@@ -15,8 +15,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 /**
  * 自定义多样化的dialog
  */
-public class PopWindowUtils extends PopupWindow {
-    private Context mContext;
+public class PopWindowUtils extends BasePopUpWindow {
+
     private AppCompatTextView actvTitle;
     private View inflate;
     private Activity mActivity;
@@ -39,33 +39,40 @@ public class PopWindowUtils extends PopupWindow {
 
     public PopWindowUtils(Context context) {
         super(context);
-        mContext = context;
-        initView();
+
     }
 
     public PopWindowUtils(Context context, Activity activity) {
-        super(context);
-        mContext = context;
-        mActivity = activity;
-        initView();
+        super(context, activity);
+
+
     }
 
-    /**
-     * 设置宽和高
-     *
-     * @param context
-     * @param width
-     * @param height
-     */
-    public PopWindowUtils(Context context, Activity activity, int width, int height) {
-        super(width, height);
-        mContext = context;
-        mActivity = activity;
-        initView();
+//    /**
+//     * 设置宽和高
+//     *
+//     * @param context
+//     * @param width
+//     * @param height
+//     */
+//    public PopWindowUtils(Context context, Activity activity, int width, int height) {
+//        super(width, height);
+//        mContext = context;
+//        mActivity = activity;
+//        initView();
+//    }
+
+
+    @Override
+    public View getView() {
+        if (mContext != null) {
+            inflate = LayoutInflater.from(mContext).inflate(R.layout.dialog, null);
+        }
+        return inflate;
     }
 
-    private void initView() {
-        inflate = LayoutInflater.from(mContext).inflate(R.layout.dialog, null);
+    @Override
+    public void initView() {
         actvTitle = (AppCompatTextView) inflate.findViewById(R.id.actv_title);
         actvContent = (AppCompatTextView) inflate.findViewById(R.id.actv_content);
         btnCancel = (AppCompatButton) inflate.findViewById(R.id.btn_cancel);
@@ -88,13 +95,6 @@ public class PopWindowUtils extends PopupWindow {
                 }
             }
         });
-
-
-        setContentView(inflate);
-
-        //去除黑边
-        setBackgroundDrawable(new ColorDrawable(0x00000000));
-
 
     }
 
@@ -132,43 +132,43 @@ public class PopWindowUtils extends PopupWindow {
     }
 
 
-    /**
-     * 设置view位置
-     *
-     * @param location
-     * @param x
-     * @param y
-     * @param is       是否点击空白区域和返回键消失
-     */
-
-    public void showAtLocation(int location, int x, int y, boolean is) {
-        setAlpha(0.5f);
-        setFocusable(is);
-        showAtLocation(inflate, location, x, y);
-    }
-
-
-    @Override
-    public void dismiss() {
-        super.dismiss();
-        setAlpha(1f);//重置背景透明度
-    }
-
-    /**
-     * 设置背景透明度
-     */
-    private void setAlpha(float f) {
-        if (mActivity != null) {
-            //设置背景半透明
-            WindowManager.LayoutParams attributes = mActivity.getWindow().getAttributes();
-
-            attributes.alpha = f;
-
-            mActivity.getWindow().setAttributes(attributes);
-        }
+//    /**
+//     * 设置view位置
+//     *
+//     * @param location
+//     * @param x
+//     * @param y
+//     * @param is       是否点击空白区域和返回键消失
+//     */
+//
+//    public void showAtLocation(int location, int x, int y, boolean is) {
+//        setAlpha(0.5f);
+//        setFocusable(is);
+//        showAtLocation(inflate, location, x, y);
+//    }
 
 
-    }
+//    @Override
+//    public void dismiss() {
+//        super.dismiss();
+//        setAlpha(1f);//重置背景透明度
+//    }
+
+//    /**
+//     * 设置背景透明度
+//     */
+//    private void setAlpha(float f) {
+//        if (mActivity != null) {
+//            //设置背景半透明
+//            WindowManager.LayoutParams attributes = mActivity.getWindow().getAttributes();
+//
+//            attributes.alpha = f;
+//
+//            mActivity.getWindow().setAttributes(attributes);
+//        }
+//
+//
+//    }
 
     private OnCickListener mOnCickListener;
 
@@ -185,5 +185,7 @@ public class PopWindowUtils extends PopupWindow {
         void onLeftClickListener(String content);
 
         void onRightClickListener(String content);
+
+        void onCancelClickLietener();
     }
 }
