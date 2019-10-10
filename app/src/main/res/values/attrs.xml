@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="pop">
+        <attr name="titleColor" format="color"></attr>
+        <attr name="titleSize" format="dimension"></attr>
+    </declare-styleable>
+</resources>
