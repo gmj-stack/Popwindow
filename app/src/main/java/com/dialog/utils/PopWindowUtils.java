@@ -68,6 +68,7 @@ public class PopWindowUtils extends BasePopUpWindow {
             @Override
             public void onClick(View v) {
                 if (getOnCickListener() != null) {
+                    dismiss();
                     getOnCickListener().onLeftClickListener(actvContent.getText().toString());
                 }
             }
@@ -77,6 +78,7 @@ public class PopWindowUtils extends BasePopUpWindow {
             @Override
             public void onClick(View v) {
                 if (getOnCickListener() != null) {
+                    dismiss();
                     getOnCickListener().onRightClickListener(actvContent.getText().toString());
                 }
             }
@@ -156,22 +158,5 @@ public class PopWindowUtils extends BasePopUpWindow {
 //
 //    }
 
-    private OnCickListener mOnCickListener;
 
-    public OnCickListener getOnCickListener() {
-        return mOnCickListener;
-    }
-
-    public PopWindowUtils setOnCickListener(OnCickListener onCickListener) {
-        mOnCickListener = onCickListener;
-        return this;
-    }
-
-    public interface OnCickListener {
-        void onLeftClickListener(String content);
-
-        void onRightClickListener(String content);
-
-        void onCancelClickLietener();
-    }
 }

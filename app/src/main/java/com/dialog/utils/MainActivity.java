@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -72,11 +74,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button2:
 
                 PopUpWindowPhoto popUpWindowPhoto =
-                        new PopUpWindowPhoto(this, MainActivity.this);
+                        new PopUpWindowPhoto(ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT, this, MainActivity.this);
 
-                popUpWindowPhoto.showAtLocation(Gravity.BOTTOM, 0, 0, true);
+                popUpWindowPhoto.setOnCickListener(new BasePopUpWindow.OnCickListener() {
+                    @Override
+                    public void onLeftClickListener(String content) {
+                        Toast.makeText(MainActivity.this, "拍照", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onRightClickListener(String content) {
+                        Toast.makeText(MainActivity.this, "相册", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onCancelClickLietener() {
+
+                    }
+                }).showAtLocation(Gravity.BOTTOM, 0, 0, true);
 
                 break;
         }
     }
+
 }

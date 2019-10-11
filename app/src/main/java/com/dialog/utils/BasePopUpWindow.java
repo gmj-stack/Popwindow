@@ -17,6 +17,11 @@ public abstract class BasePopUpWindow extends PopupWindow {
     public Activity mActivity;
 
 
+    /**
+     * 单纯弹窗  无背景
+     *
+     * @param context
+     */
     public BasePopUpWindow(Context context) {
         super(context);
         mContext = context;
@@ -24,6 +29,12 @@ public abstract class BasePopUpWindow extends PopupWindow {
 
     }
 
+    /**
+     * 是否设置背景
+     *
+     * @param context
+     * @param activity
+     */
     public BasePopUpWindow(Context context, Activity activity) {
         super(context);
         mContext = context;
@@ -31,6 +42,14 @@ public abstract class BasePopUpWindow extends PopupWindow {
         init();
     }
 
+    /**
+     * 设置宽高
+     *
+     * @param width
+     * @param height
+     * @param context
+     * @param activity
+     */
     public BasePopUpWindow(int width, int height, Context context, Activity activity) {
         super(width, height);
         mContext = context;
@@ -41,6 +60,7 @@ public abstract class BasePopUpWindow extends PopupWindow {
     public abstract View getView();
 
     private void init() {
+
         mView = getView();
 
         if (mView != null) {
@@ -63,7 +83,7 @@ public abstract class BasePopUpWindow extends PopupWindow {
      * @param location
      * @param x
      * @param y
-     * @param is       是否点击空白区域和返回键消失
+     * @param is       是否点击空白区域和返回键消失  true 消失 并且监听返回键
      */
 
     public void showAtLocation(int location, int x, int y, boolean is) {
@@ -97,4 +117,23 @@ public abstract class BasePopUpWindow extends PopupWindow {
 
     }
 
+    private OnCickListener mOnCickListener;
+
+    public OnCickListener getOnCickListener() {
+        return mOnCickListener;
+    }
+
+    public BasePopUpWindow setOnCickListener(OnCickListener onCickListener) {
+        mOnCickListener = onCickListener;
+        return this;
+    }
+
+    public interface OnCickListener {
+
+        void onLeftClickListener(String content);
+
+        void onRightClickListener(String content);
+
+        void onCancelClickLietener();
+    }
 }
