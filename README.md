@@ -42,6 +42,8 @@ for (int i = 0; i < 10; i++) {
   
 然后调用addview方法 将控件添加进去即可。
 如果无法日常使用可自行扩展
+
+使用方式:implementation 'com.github.gmj-stack:Popwindow:v1.0.1'
         
         
         
