@@ -64,7 +64,6 @@ public class PopWindowUtils extends BasePopUpWindow {
     @Override
     public void initView() {
         actvTitle = (AppCompatTextView) inflate.findViewById(R.id.actv_title);
-//        actvContent = (AppCompatTextView) inflate.findViewById(R.id.actv_content);
         btnCancel = (AppCompatButton) inflate.findViewById(R.id.btn_cancel);
         btnCommit = (AppCompatButton) inflate.findViewById(R.id.btn_commit);
         mRelativeLayout = inflate.findViewById(R.id.rl_addview);
@@ -122,6 +121,32 @@ public class PopWindowUtils extends BasePopUpWindow {
             content = ((TextView) view).getText().toString().trim();
         }
         mRelativeLayout.addView(view);
+        return this;
+    }
+
+    /**
+     * 设置按钮背景颜色
+     */
+    public PopWindowUtils setBtnBackColor(int cancel, int commit) {
+        if (btnCancel != null) {
+            btnCancel.setBackgroundColor(cancel);
+        }
+        if (btnCommit != null) {
+            btnCommit.setBackgroundColor(commit);
+        }
+        return this;
+    }
+
+    /**
+     * 设置按钮文字
+     */
+    public PopWindowUtils setBtnTextString(String cancel, String commit) {
+        if (btnCancel != null) {
+            btnCancel.setText(cancel);
+        }
+        if (btnCommit != null) {
+            btnCommit.setText(commit);
+        }
         return this;
     }
 
