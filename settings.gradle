@@ -1,2 +1,2 @@
-include ':popuplibs'
+include ':popuplibs', ':myapplication'
 rootProject.name='DialogUtils'
