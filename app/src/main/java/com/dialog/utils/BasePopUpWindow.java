@@ -43,6 +43,20 @@ public abstract class BasePopUpWindow extends PopupWindow {
     }
 
     /**
+     * 设置宽高  无背景
+     *
+     * @param width
+     * @param height
+     * @param context
+     */
+    public BasePopUpWindow(int width, int height, Context context) {
+        super(width, height);
+        mContext = context;
+
+        init();
+    }
+
+    /**
      * 设置宽高
      *
      * @param width
@@ -60,6 +74,10 @@ public abstract class BasePopUpWindow extends PopupWindow {
     public abstract View getView();
 
     private void init() {
+
+        if (mContext == null) {
+            return;
+        }
 
         mView = getView();
 

@@ -1,6 +1,5 @@
 package com.dialog.utils;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -27,6 +25,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private Button mButton2;
     private PopWindowUtils popWindowUtils;
+    /**
+     * 加载弹窗
+     */
+    private Button mButton3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButton.setOnClickListener(this);
         mButton2 = (Button) findViewById(R.id.button2);
         mButton2.setOnClickListener(this);
+        mButton3 = (Button) findViewById(R.id.button3);
+        mButton3.setOnClickListener(this);
     }
 
     @Override
@@ -95,6 +99,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }).showAtLocation(Gravity.BOTTOM, 0, 0, true);
 
+                break;
+            case R.id.button3:
+                //加载框 可以二次封装成单例
+                PopDIalogLoading popDIalogLoading = new PopDIalogLoading(this, MainActivity.this);
+                popDIalogLoading.showAtLocation(Gravity.CENTER, 0, 0, true);
                 break;
         }
     }

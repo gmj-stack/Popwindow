@@ -23,6 +23,10 @@ public class PopUpWindowPhoto extends BasePopUpWindow {
         super(context, activity);
     }
 
+    public PopUpWindowPhoto(int width, int height, Context context) {
+        super(width, height, context);
+    }
+
     public PopUpWindowPhoto(int width, int height, Context context, Activity activity) {
         super(width, height, context, activity);
     }
