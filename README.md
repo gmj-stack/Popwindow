@@ -27,14 +27,14 @@ public class TestDialog extends BasePopUpWindow {
 重点说下PopWindowUtils这个类,有时候我们并不只是单纯的显示一个弹窗，有时候还涉及到交互操作，所以单独的显示内容是无法满足的。
 在popwinddowutils这个类中，我们可以往布局中添加任意的布局和控件，比如 textview，edittext ,listview等。
    //textview 示范
-AppCompatTextView appCompatTextView = new AppCompatTextView(this);
-appCompatTextView.setText("111111");
+AppCompatTextView appCompatTextView = new AppCompatTextView(this);                                                                       
+appCompatTextView.setText("111111");                                                                                                     
   //edittext 示范
-AppCompatEditText appCompatEditText = new AppCompatEditText(this);
+AppCompatEditText appCompatEditText = new AppCompatEditText(this);                                                                       
 appCompatEditText.setText("11111111111");
    //listview示范
-ListView listView = new ListView(this);
-ArrayList<String> strings = new ArrayList<>();
+ListView listView = new ListView(this);                                                                                           
+ArrayList<String> strings = new ArrayList<>();                                                                                           
 for (int i = 0; i < 10; i++) {
       strings.add("" + i);
     }
