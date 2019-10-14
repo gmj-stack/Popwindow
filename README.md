@@ -24,6 +24,10 @@ public class TestDialog extends BasePopUpWindow {
 }
 这是最基本的使用方式，demo中提供了内容弹窗 ，列表，以及相对某个元素显示
 
+
+PopDialogLoading此类是loading框
+PopUpWindowPhoto是普通的拍照框
+
 重点说下PopWindowUtils这个类,有时候我们并不只是单纯的显示一个弹窗，有时候还涉及到交互操作，所以单独的显示内容是无法满足的。
 在popwinddowutils这个类中，我们可以往布局中添加任意的布局和控件，比如 textview，edittext ,listview等。
    //textview 示范                                                                                                                                                                                                                                        
