@@ -52,7 +52,6 @@ public abstract class BasePopUpWindow extends PopupWindow {
     public BasePopUpWindow(int width, int height, Context context) {
         super(width, height);
         mContext = context;
-
         init();
     }
 
@@ -70,6 +69,8 @@ public abstract class BasePopUpWindow extends PopupWindow {
         mActivity = activity;
         init();
     }
+
+
 
     public abstract View getView();
 
@@ -113,6 +114,37 @@ public abstract class BasePopUpWindow extends PopupWindow {
 
     }
 
+    /**
+     * 单纯试图
+     *
+     * @param anchor
+     * @param isCanceled
+     */
+    public void showAsDropDown(View anchor, boolean isCanceled) {
+        setAlpha(0.5f);
+        setFocusable(isCanceled);
+        if (anchor != null) {
+            showAsDropDown(anchor);
+        }
+    }
+
+    public void showAsDropDown(View anchor, int xoff, int yoff, boolean is) {
+        setAlpha(0.5f);
+        setFocusable(is);
+        if (anchor != null) {
+            showAsDropDown(anchor, xoff, yoff);
+        }
+    }
+
+
+    public void showAsDropDown(View anchor, int xoff, int yoff, int gravity, boolean is) {
+        setAlpha(0.5f);
+        setFocusable(is);
+        if (anchor != null) {
+            showAsDropDown(anchor, xoff, yoff, gravity);
+        }
+    }
+
     @Override
     public void dismiss() {
         super.dismiss();
@@ -131,7 +163,6 @@ public abstract class BasePopUpWindow extends PopupWindow {
 
             mActivity.getWindow().setAttributes(attributes);
         }
-
 
     }
 

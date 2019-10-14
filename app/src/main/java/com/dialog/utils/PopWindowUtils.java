@@ -7,10 +7,15 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
+
+import org.w3c.dom.Text;
 
 /**
  * 自定义多样化的dialog
@@ -19,10 +24,10 @@ public class PopWindowUtils extends BasePopUpWindow {
 
     private AppCompatTextView actvTitle;
     private View inflate;
-
-    private AppCompatTextView actvContent;
+    private RelativeLayout mRelativeLayout;
     private AppCompatButton btnCancel;
     private AppCompatButton btnCommit;
+    private String content;
 
 //    public static PopWindowUtils getInstance(Context context) {
 //
@@ -45,7 +50,6 @@ public class PopWindowUtils extends BasePopUpWindow {
     public PopWindowUtils(Context context, Activity activity) {
         super(context, activity);
 
-
     }
 
 
@@ -60,16 +64,17 @@ public class PopWindowUtils extends BasePopUpWindow {
     @Override
     public void initView() {
         actvTitle = (AppCompatTextView) inflate.findViewById(R.id.actv_title);
-        actvContent = (AppCompatTextView) inflate.findViewById(R.id.actv_content);
+//        actvContent = (AppCompatTextView) inflate.findViewById(R.id.actv_content);
         btnCancel = (AppCompatButton) inflate.findViewById(R.id.btn_cancel);
         btnCommit = (AppCompatButton) inflate.findViewById(R.id.btn_commit);
+        mRelativeLayout = inflate.findViewById(R.id.rl_addview);
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (getOnCickListener() != null) {
                     dismiss();
-                    getOnCickListener().onLeftClickListener(actvContent.getText().toString());
+                    getOnCickListener().onLeftClickListener(content);
                 }
             }
         });
@@ -79,7 +84,7 @@ public class PopWindowUtils extends BasePopUpWindow {
             public void onClick(View v) {
                 if (getOnCickListener() != null) {
                     dismiss();
-                    getOnCickListener().onRightClickListener(actvContent.getText().toString());
+                    getOnCickListener().onRightClickListener(content);
                 }
             }
         });
@@ -105,56 +110,32 @@ public class PopWindowUtils extends BasePopUpWindow {
         return this;
     }
 
+
+    public PopWindowUtils addView(View view) {
+        //当添加的是edittext时  将获取输入的内容
+        if (view instanceof EditText) {
+            setFocusable(true);
+            content = ((EditText) view).getText().toString().trim();
+        }
+        //当添加的是edittext时  将获取输入的内容
+        if (view instanceof TextView) {
+            content = ((TextView) view).getText().toString().trim();
+        }
+        mRelativeLayout.addView(view);
+        return this;
+    }
+
     /**
      * 设置内容模块
      *
      * @param content
      * @return
      */
-    public PopWindowUtils setContent(String content) {
-        if (actvContent != null) {
-            actvContent.setText(content);
-        }
-        return this;
-
-    }
-
-
-//    /**
-//     * 设置view位置
-//     *
-//     * @param location
-//     * @param x
-//     * @param y
-//     * @param is       是否点击空白区域和返回键消失
-//     */
-//
-//    public void showAtLocation(int location, int x, int y, boolean is) {
-//        setAlpha(0.5f);
-//        setFocusable(is);
-//        showAtLocation(inflate, location, x, y);
-//    }
-
-
-//    @Override
-//    public void dismiss() {
-//        super.dismiss();
-//        setAlpha(1f);//重置背景透明度
-//    }
-
-//    /**
-//     * 设置背景透明度
-//     */
-//    private void setAlpha(float f) {
-//        if (mActivity != null) {
-//            //设置背景半透明
-//            WindowManager.LayoutParams attributes = mActivity.getWindow().getAttributes();
-//
-//            attributes.alpha = f;
-//
-//            mActivity.getWindow().setAttributes(attributes);
+//    public PopWindowUtils setContent(String content) {
+//        if (actvContent != null) {
+//            actvContent.setText(content);
 //        }
-//
+//        return this;
 //
 //    }
 
