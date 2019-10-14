@@ -17,6 +17,6 @@ public class TestDialog extends BasePopUpWindow {
 
     @Override
     protected void initView() {
-
+        View viewById = mView.findViewById(R.id.button5);
     }
 }

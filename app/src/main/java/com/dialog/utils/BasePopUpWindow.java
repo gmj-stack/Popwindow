@@ -12,7 +12,7 @@ import android.widget.PopupWindow;
  */
 public abstract class BasePopUpWindow extends PopupWindow {
 
-    private View mView;
+    public View mView;
     public Context mContext;
     public Activity mActivity;
 
