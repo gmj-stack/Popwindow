@@ -8,9 +8,9 @@ import android.view.View;
 /**
  * 加载弹窗
  */
-public class PopDIalogLoading extends BasePopUpWindow {
+public class PopDialogLoading extends BasePopUpWindow {
 
-    public PopDIalogLoading(Context context, Activity activity) {
+    public PopDialogLoading(Context context, Activity activity) {
         super(context, activity);
     }
 
